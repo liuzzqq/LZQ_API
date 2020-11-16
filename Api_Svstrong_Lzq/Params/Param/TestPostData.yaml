@@ -1,0 +1,139 @@
+- dec: "获取互动课件内页详情"
+  id: "1"
+  method: "post"
+  path: "/api/v1/course/create"
+  data: {"title":"接口自动化框架--测试","description":""}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "课件-添加课件"
+  id: "2"
+  method: "post"
+  path: "/api/v1/folder/addCourseware"
+  data: {"cid":10786,"folder_id":11232,"ext_name":"5",
+         "file_download_url":"https://file.svstrong.com/group1/M00/00/0A/O26a7F8zukWALVFWABmx2KDicFM52955.5",
+         "file_name":"15.5 三角形中位线定理 501","file_size":1683928,"page_count":0}
+  status: 0
+  expectd_body: {"code":0}
+
+
+- dec: "课件-添加外链"
+  id: "3"
+  method: "post"
+  path: "/api/v1/folder/addWeblink"
+  data: {"cid":10786,"folder_id":11232,
+         "title":"接口自动化参数设置--百度","weblink":"https://www.baidu.com/"}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "课件-复制课件"
+  id: "4"
+  method: "post"
+  path: "/api/v1/folder/copyCourseware"
+  data: {"courseware_ids":"1119","folder_id":11247}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "课件-获取课件列表"
+  id: "5"
+  method: "post"
+  path: "/api/v1/folder/coursewareList"
+  data: {"cid":10786,"folder_id":11232,"keyword":"",
+         "limit":10,"order_field":"update_time",
+         "order_way":"desc","courseware_type":"","page":1}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "课件-创建章节目录"
+  id: "6"
+  method: "post"
+  path: "/api/v1/folder/create"
+  data: {"cid":"10801","titles":"接口自动化测试框架1,接口自动化框架2"}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "课件-创建子目录"
+  id: "7"
+  method: "post"
+  path: "/api/v1/folder/createNode"
+  data: {"pid":11248,"title":"自动"}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "章节目录删除目录"
+  id: "8"
+  method: "post"
+  path: "/api/v1/folder/createNode"
+  data: {"source_id":11252}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "章节目录-获取章节列表"
+  id: "9"
+  method: "post"
+  path: "/api/v1/folder/list"
+  data: {"cid":"10801",
+         "showSortOut":true}
+  status: 0
+  expectd_body: {"code":0}
+
+
+- dec: "章节目录-移动目录"
+  id: "10"
+  method: "post"
+  path: "/api/v1/folder/move"
+  data: {
+    "source_id": 11257,
+    "target_id": 11255
+  }
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "章节目录-目录重命名"
+  id: "11"
+  method: "post"
+  path: "/api/v1/folder/moveCourseware"
+  data: {"id":11248,"title":"接口自动化测试框架"}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "章节目录-移动课件"
+  id: "12"
+  method: "post"
+  path: "/api/v1/folder/moveCourseware"
+  data: {"courseware_ids":"1123","folder_id":11247}
+  status: 1
+  expectd_body: {"code":0}
+
+- dec: "课件-重命名课件"
+  id: "13"
+  method: "post"
+  path: "/api/v1/folder/renameCourseware"
+  data: {"courseware_id":1123,"title":"接口自动化参数设置--百度"}
+  status: 1
+  expectd_body: {"code":0}
+
+- dec: "获取互动课件的习题"
+  id: "14"
+  method: "post"
+  path: "/api/v1/folderCourse/questions"
+  data: {"courseware_id":1125,"interact_id":8762}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "添加试卷"
+  id: "15"
+  method: "post"
+  path: "/api/v1/folderPaper/add"
+  data: {"title":"接口自动化","folder_id":11253}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "批量删除试卷"
+  id: "16"
+  method: "post"
+  path: "/api/v1/folderPaper/batchDelete"
+  data: {"id_list":[253]}
+  status: 0
+  expectd_body: {"code":0}
+
