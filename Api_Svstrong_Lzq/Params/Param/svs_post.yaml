@@ -1,0 +1,391 @@
+#- dec: "创建课程"
+#  id: "1"
+#  method: "post"
+#  path: /api/v1/course/create
+#  params: {"title":"test001","description":""}
+#  status: 1
+#  expectd_body: {"code":0}
+#
+#
+#- dec: "新增班级"
+#  id: "2"
+#  method: "post"
+#  path: /api/v1/class/create
+#  params: {"cid":10881,"title":"test001","semester":"2019年","season":"秋"}
+#  status: 0
+#  expectd_body: {"code":0}
+
+- dec: "课件-添加课件"
+  id: "1"
+  method: "post"
+  path: "/api/v1/folder/addCourseware"
+  data: {"cid":10880,"folder_id":11492,"ext_name":"ppt","file_download_url":"https://qn.svstrong.com/2020-11-18-ab5dc149bd014f13a6f2ab8d4d07436f.ppt","file_name":"《四边形分类》.ppt","file_size":965632,"page_count":0}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "课件-添加外链"
+  id: "2"
+  method: "post"
+  path: "/api/v1/folder/addWeblink"
+  data: {"cid":10880,"folder_id":11492,
+         "title":"接口自动化参数设置--百度","weblink":"https://www.baidu.com/"}
+  status: 0
+  expectd_body: {"code":0}
+
+
+- dec: "课件-复制课件"
+  id: "3"
+  method: "post"
+  path: "/api/v1/folder/copyCourseware"
+  data: {"courseware_ids":"1335","folder_id":11492}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "课件-获取课件列表"
+  id: "4"
+  method: "post"
+  path: "/api/v1/folder/coursewareList"
+  data: {"cid":10880,"folder_id":11492,"keyword":"",
+         "limit":10,"order_field":"update_time",
+         "order_way":"desc","courseware_type":"","page":1}
+  status: 0
+  expectd_body: {"code":0}
+
+
+- dec: "课件-创建章节目录"
+  id: "5"
+  method: "post"
+  path: "/api/v1/folder/create"
+  data: {"cid":"10880","titles":"接口自动化测试框架1,接口自动化框架2"}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "互动课件添加判断题"
+  id: "6"
+  method: "post"
+  path: "/api/v1/folderQuestion/courseAdd"
+  data: {"interact_id":10614,"question_type":1,"answers":[{"answer":"1","answer_score":0}],"score":12,"title":"<p>212</p>","explanation":"<p>21</p>"}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "互动课件添加单选题"
+  id: "7"
+  method: "post"
+  path: "/api/v1/folderQuestion/courseAdd"
+  data: {"interact_id":10614,"question_type":2,"answers":[{"answer":1,"answer_score":0}],"score":12,"title":"<p>21</p>","explanation":"<p>1212</p>","options":["2","2","2","2"],"part":"1","conditions":[{"serial":"A","content":"2","selected":true},{"serial":"B","content":"2","selected":false},{"serial":"C","content":"2","selected":false},{"serial":"D","content":"2","selected":false}],"part_score":0}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "互动课件添加多选题"
+  id: "8"
+  method: "post"
+  path: "/api/v1/folderQuestion/courseAdd"
+  data: {"interact_id":10614,"question_type":3,"answers":[{"answer":3,"answer_score":0},{"answer":4,"answer_score":0}],"score":12,"title":"<p>111</p>","explanation":"<p>3123</p>","options":["12","12","32","231"],"part":"1","conditions":[{"serial":"A","content":"12","selected":false},{"serial":"B","content":"12","selected":false},{"serial":"C","content":"32","selected":true},{"serial":"D","content":"231","selected":true}],"part_score":0}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "互动课件添加投票题"
+  id: "9"
+  method: "post"
+  path: "/api/v1/folderQuestion/courseAdd"
+  data: {"interact_id":10614,"question_type":"6","answers":[],"score":0,"title":"<p>1212</p>","explanation":"","options":["1","1","1","1"],"part":"1","conditions":[{"serial":"A","content":"1","selected":false},{"serial":"B","content":"1","selected":false},{"serial":"C","content":"1","selected":false},{"serial":"D","content":"1","selected":false}],"part_score":0}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "互动课件添加判断题"
+  id: "10"
+  method: "post"
+  path: "/api/v1/folderQuestion/courseAdd"
+  data: {"interact_id":10614,"question_type":5,"answer":"<p>2121</p>","title":"<p>121212</p>","score":12,"answers":[{"answer":"<p>2121</p>","answer_score":0}],"explanation":"<p>212122</p>"}
+  status: 0
+  expectd_body: {"code":0}
+
+
+- dec: "课件-发布课件到班级"
+  id: "11"
+  method: "post"
+  path: "/api/v1/release/publishCourseware"
+  data: {"biz_id":"1340","title":"《四边形分类》.ppt","class_id":8395,"end_reply_time":"","publish_time":"","publish_answer_time":"","publish_answer":1}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "课件-添加试卷"
+  id: "12"
+  method: "post"
+  path: "/api/v1/folderPaper/add"
+  data: {"title":"002","folder_id":11492}
+  status: 1
+  expectd_body: {"code":0}
+
+- dec: "课件-添加试卷判断题"
+  id: "13"
+  method: "post"
+  path: "/api/v1/folderQuestion/add"
+  data: {"paper_id":277,"question_type":1,"answers":[{"answer":"1","answer_score":0}],"score":23,"title":"<p>32<br/></p>","explanation":"<p>233</p>"}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "课件-添加试卷单选题"
+  id: "14"
+  method: "post"
+  path: "/api/v1/folderQuestion/add"
+  data: {"paper_id":277,"question_type":2,"answers":[{"answer":4,"answer_score":0}],"score":12,"title":"<p>11111</p>","explanation":"<p>12312</p>","options":["11","11","11","11"],"part":"1","conditions":[{"serial":"A","content":"11","selected":false},{"serial":"B","content":"11","selected":false},{"serial":"C","content":"11","selected":false},{"serial":"D","content":"11","selected":true}],"part_score":0}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "课件-添加试卷多选"
+  id: "15"
+  method: "post"
+  path: "/api/v1/folderQuestion/add"
+  data: {"paper_id":277,"question_type":3,"answers":[{"answer":3,"answer_score":0},{"answer":4,"answer_score":0}],"score":23,"title":"<p>22</p>","explanation":"<p>23232</p>","options":["2","2","3","32"],"part":"1","conditions":[{"serial":"A","content":"2","selected":false},{"serial":"B","content":"2","selected":false},{"serial":"C","content":"3","selected":true},{"serial":"D","content":"32","selected":true}],"part_score":0}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "课件-添加试卷填空题"
+  id: "16"
+  method: "post"
+  path: "/api/v1/folderQuestion/add"
+  data: {"paper_id":277,"question_type":4,"answers":[{"answer":"1","answer_score":"1"},{"answer":"1","answer_score":"2"},{"answer":"1","answer_score":"3"}],"score":6,"title":"<p>1111111&nbsp;<span style=\"text-decoration-line: underline;\">&nbsp;&nbsp;1&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style=\"text-decoration-line: underline;\">&nbsp;&nbsp;2&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style=\"text-decoration-line: underline;\">&nbsp;&nbsp;3&nbsp;&nbsp;</span>&nbsp;</p>","explanation":"<p>32131312</p>","conditions":[{"content":"1","score":"1","serial":"1"},{"content":"1","score":"2","serial":"2"},{"content":"1","score":"3","serial":"3"}],"options":[]}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "课件-添加试卷简答题"
+  id: "17"
+  method: "post"
+  path: "/api/v1/folderQuestion/add"
+  data: {"paper_id":277,"question_type":5,"answer":"<p>2121</p>","title":"<p>12121</p>","score":12,"answers":[{"answer":"<p>2121</p>","answer_score":0}],"explanation":"<p>222222</p>"}
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "课件-添加段落说明"
+  id: "19"
+  method: "post"
+  path: "/api/v1/folderQuestion/add"
+  data: {"paper_id":277,"question_type":7,"title":"<p>33333333</p>"}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课件-发布试卷"
+  id: "20"
+  method: "post"
+  path: "/api/v1/folderPaper/publish"
+  data: {"paper_id":277,"title":"002","cidList":[8395],"end_reply_time":"","exam_time":null,"publish_time":"","publish_answer_time":"","publish_answer":1,"is_view_paper":1}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "我的-获取我的学习记录"
+  id: "21"
+  method: "post"
+  path: "/api/v1/tang/myLearnList"
+  data: {"limit":10,"page":1,"biz_type":2,"title":""}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课程班级-置顶"
+  id: "22"
+  method: "post"
+  path: "/api/v1/course/setTop"
+  data: {"id":10880,"top_state":0}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "我的--编辑资料"
+  id: "23"
+  method: "post"
+  path: "/api/v1/user/editInfo"
+  data: {"avatar":"https://qn.svstrong.com/2020-12-29-031238da4161410987be63e6127e4d28.jpg","username":"接口自动化测试使用","school":"ba7f79b65ecc4241b6e67a5c54fc0190","sno":"123"}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课程--获取教学日志"
+  id: "24"
+  method: "post"
+  path: "/api/v1/classLog/list"
+  data: {"biz_type":0,"limit":10,"page":1,"class_id":8395}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课程--获取话题列表"
+  id: "25"
+  method: "post"
+  path: "/api/v1/topic/list"
+  data: {"class_id":"8395","limit":10,"page":1}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课程--发布话题"
+  id: "26"
+  method: "post"
+  path: "/api/v1/topic/add"
+  data: {"title":"test001","content":"<p><img src=\"https://ueditor.svstrong.com/ueditor/upload/image/20201230/1609320734948011381.jpg\" title=\"1609320734948011381.jpg\" alt=\"896ff430gy1glf7q0fnskj20on1hcwo4.jpg\"/></p>","attachments":[{"download_url":"https://qn.svstrong.com/2020-12-29-031238da4161410987be63e6127e4d28.jpg","file_ext_type":"jpg","file_size":1270777,"title":"橙色头发动漫美女4k壁纸3840x2160_彼岸图网.jpg"}],"class_id":"8395"}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课程--获取班级成员"
+  id: "27"
+  method: "post"
+  path: "/api/v1/classMember/list"
+  data: {"class_id":8395,"limit":10,"page":1,"black_state":1,"query_str":""}
+  status: 0
+  expectd_body: { "code": 0 }
+
+
+- dec: "课堂--获取学生表现"
+  id: "28"
+  method: "post"
+  path: "/api/v1/report/studentShow"
+  data: {"sign_state":2,"nameOrNo":"","tid":7383,"limit":10,"page":1}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课堂--获取学生到课人数"
+  id: "29"
+  method: "post"
+  path: "/api/v1/report/studentShow"
+  data: {"sign_state":1,"nameOrNo":"","tid":7383,"limit":10,"page":1}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课堂--获取学生表现详情"
+  id: "30"
+  method: "post"
+  path: "/api/v1/report/studentShowInfo"
+  data: {"tid":7383,"uid":309}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课堂--获取学生表现详情修改分数"
+  id: "31"
+  method: "post"
+  path: "/api/v1/tang/modifyPoint"
+  data: {"student_id":309,"tid":7383,"point":21}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课堂--获取学生主观题为批改数量"
+  id: "32"
+  method: "post"
+  path: "/api/v1/result/uncheckCount"
+  data: {"biz_id":"7383","biz_type":2}
+  status: 0
+  expectd_body: { "code": 0 }
+
+
+- dec: "课堂--课堂习题答题统计"
+  id: "33"
+  method: "post"
+  path: "/api/v1/report/question/choiceAnswer"
+  data: {"biz_type":1,"question_id":13452,"tid":7383}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "教学日志--获取课件列表"
+  id: "34"
+  method: "post"
+  path: "/api/v1/classLog/list"
+  data: {"biz_type":"2","limit":10,"page":1,"class_id":8395}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课件详情--学生表现列表"
+  id: "35"
+  method: "post"
+  path: "/api/v1/courseware/performanceInfo"
+  data: {"courseware_id":"3743","personnel_type":"1","limit":5,"page":1,"username":""}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课件详情--学生表现列表--已完成"
+  id: "36"
+  method: "post"
+  path: "/api/v1/courseware/performanceInfo"
+  data: {"courseware_id":"3743","personnel_type":"2","limit":5,"page":1,"username":""}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课件详情--学生表现列表--未完成"
+  id: "37"
+  method: "post"
+  path: "/api/v1/courseware/performanceInfo"
+  data: {"courseware_id":"3743","personnel_type":"3","limit":5,"page":1,"username":""}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课件详情--学生表现列表--未查看"
+  id: "38"
+  method: "post"
+  path: "/api/v1/courseware/performanceInfo"
+  data: {"courseware_id":"3743","personnel_type":"4","limit":5,"page":1,"username":""}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课件详情--报告老师列表"
+  id: "39"
+  method: "post"
+  path: "/api/v1/courseware/reportsList"
+  data: {"courseware_id":"3743","limit":5,"page":1}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课件详情--习题分析"
+  id: "40"
+  method: "post"
+  path: "/api/v1/courseware/questionInfo"
+  data: {"courseware_id":"3743","limit":999,"page":1}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "试卷详情--学生表现"
+  id: "41"
+  method: "post"
+  path: "/api/v1/report/paper/student"
+  data: {"paper_id":"673","limit":10,"page":1,"finish_state":"","nameOrNo":""}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "试卷详情--学生表现--完成人数"
+  id: "42"
+  method: "post"
+  path: "/api/v1/report/paper/student"
+  data: {"paper_id":"673","limit":10,"page":1,"finish_state":"1","nameOrNo":""}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "试卷详情--学生表现--未完成人数"
+  id: "43"
+  method: "post"
+  path: "/api/v1/report/paper/student"
+  data: {"paper_id":"673","limit":10,"page":1,"finish_state":"0","nameOrNo":""}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "试卷详情--学生表现--成绩单"
+  id: "44"
+  method: "post"
+  path: "/api/v1/result/detailAndUserResult"
+  data: {"id":"673","uid":"203"}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "试卷详情--学生表现--查看试卷详情"
+  id: "45"
+  method: "post"
+  path: "/api/v1/paper/reportStudent"
+  data: {"paper_id":"673","uid":"203"}
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "老师发送公告"
+  id: "46"
+  method: "post"
+  path: "/api/v1/release/publishAnnouncement"
+  data: {"publish_time":"","class_id":8395,"date":"","time":"","title":"自动发送","content":"<p>121<img src=\"https://ueditor.svstrong.com/ueditor/upload/image/20210104/1609750887305029204.jpg\" title=\"1609750887305029204.jpg\" alt=\"0086ymKRly1glkdl2093dj31hc0u077w.jpg\"/></p>","attachments":[{"download_url":"https://qn.svstrong.com/2021-01-04-c44bbfbcad2a4e81afae3882573a8e89.jpg","file_ext_type":"jpg","file_size":1784678,"title":"吃货女子 炒货 年糕 撸串 饮料 6k动漫壁纸_彼岸图网.jpg"}]}
+  status: 0
+  expectd_body: { "code": 0 }
+
+
+
+
+
+
+

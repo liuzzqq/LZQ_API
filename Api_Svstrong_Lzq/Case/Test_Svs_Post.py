@@ -1,16 +1,19 @@
 from Params.Read_TestData import DataTest
 import unittest
-from ddt import ddt,data
+from ddt import ddt, data
 from Conf.Read_Config import Read_Config
 from Common.Requests import Request
 from Common.Assert import Assert
 from Common.Log import Log
 from BeautifulReport import BeautifulReport
 
-bf =BeautifulReport
+bf = BeautifulReport
+
+
 @ddt
-class Test_Svs(unittest.TestCase):
-    test_data = DataTest('/TestPostData.yaml').test_read()
+class Test_Svs_Post(unittest.TestCase):
+    test_data = DataTest('/svs_post.yaml').test_read()
+
     @data(*test_data)
     def test_svs_02(self, test_item):
         log = Log()
@@ -21,49 +24,45 @@ class Test_Svs(unittest.TestCase):
 
         if test_item['status'] == 0:
             res = Request('Svs').post_requests(url, test_item['data'])
+            print(res.json())
+
             log.debug('正在执行第{0}条case:"标题为{1}"'.format(test_item['id'], test_item['dec']))
-           
 
+            code = res.status_code
 
-            code =res.status_code
-
-            #对比接口状态码实际结果与预期结果
-            test_code = self.assertEqual(code,200)
+            # 对比接口状态码实际结果与预期结果
+            test_code = self.assertEqual(code, 200)
 
             if test_code == None:
                 pass
             else:
 
-
                 log.error('【状态码错误!!】执行第{0}条case:标题为"{1}"'.format(test_item['id'],
-                         test_item['dec']))
+                                                                 test_item['dec']))
                 print("当前错误码为" + str(code))
-
 
             res = res.json()['code']
 
-            #提取接口响应内容进行比较
-            test_result = self.assertEqual(res,test_item['expectd_body']['code'])
-
+            # 提取接口响应内容进行比较
+            test_result = self.assertEqual(res, test_item['expectd_body']['code'])
 
             if test_result == None:
                 log.info('【测试通过!!】执行第{0}条case:标题为"{1}"'.format(test_item['id'],
-                        test_item['dec']))
+                                                               test_item['dec']))
 
             else:
                 log.error('【测试失败!!】执行第{0}条case:标题为"{1}"'.format(test_item['id'],
-                          test_item['dec']) + '失败。')
-                print("当前接口返回的信息为："+str(res))
+                                                                test_item['dec']) + '失败。')
+                print("当前接口返回的信息为：" + str(res))
 
 
         else:
             # Log打印接口状态未开启
 
             log.warning('未执行第{0}条case:"标题为{1}"'.format(test_item['id'],
-                        test_item['dec']) + '未开启状态')
+                                                       test_item['dec']) + '未开启状态')
             pass
 
-
-
-
+if __name__ == '__main__':
+    unittest.main()
 

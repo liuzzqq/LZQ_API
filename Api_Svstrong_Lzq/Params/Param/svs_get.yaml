@@ -1,0 +1,186 @@
+
+- dec: "查询老师正在教学的课堂"
+  id: "1"
+  method: "get"
+  path: /api/v1/tang/teaching
+  params:
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "课件-获取课件详情"
+  id: "2"
+  method: "get"
+  path: /api/v1/folder/coursewareDetail
+  params: id=1340
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "课件-获取互动课件内页详情"
+  id: "3"
+  method: "get"
+  path: /api/v1/folder/coursewareInteractDetail
+  params: id=1335
+  status: 0
+  expectd_body: {"code":0}
+
+
+- dec: "试卷详情"
+  id: "4"
+  method: "get"
+  path: "/api/v1/folderPaper/info"
+  params: id=252
+  status: 0
+  expectd_body: {"code":0}
+
+
+- dec: "获取试卷中所有题型"
+  id: "5"
+  method: "get"
+  path: "/api/v1/folderPaper/questionTypes"
+  params: id=275
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "获取试卷中所有习题|试卷预览"
+  id: "6"
+  method: "get"
+  path: "/api/v1/folderPaper/questions"
+  params: id=275
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "习题删除"
+  id: "7"
+  method: "get"
+  path: "/api/v1/folderQuestion/delete"
+  params: id=1101
+  status: 1
+  expectd_body: { "code": 0 }
+
+- dec: "课件-试卷导出"
+  id: "8"
+  method: "get"
+  path: /api/v1/folder/coursewareInteractDetail
+  params: id=11232
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "我的-获取用户信息"
+  id: "9"
+  method: "get"
+  path: /api/v1/user/getInfo
+  params:
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "我的-获取我的错题集"
+  id: "10"
+  method: "get"
+  path: /api/v1/course/listen
+  params:
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "我的-获取我的错题集"
+  id: "11"
+  method: "get"
+  path: /api/v1/tang/gao/myList
+  params: limit=10&page=1
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "课程--我听的课"
+  id: "12"
+  method: "get"
+  path: /api/v1/course/listen
+  params:
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "学习日志-课堂详情"
+  id: "13"
+  method: "get"
+  path: /api/v1/tang/getById?tid=7383
+  params:
+  status: 0
+  expectd_body: {"code":0}
+
+- dec: "课堂--课堂习题统计"
+  id: "14"
+  method: "get"
+  path: "/api/v1/report/question/general?tid=7383"
+  params:
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课堂--获取课堂小测"
+  id: "15"
+  method: "get"
+  path: "/api/v1/report/paper/info?tid=7383"
+  params:
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课堂--课堂互动"
+  id: "16"
+  method: "get"
+  path: "/api/v1/tang/gao/list?tid=7383&limit=10&page=1"
+  params:
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课堂--课堂互动获取投稿列表"
+  id: "17"
+  method: "get"
+  path: "/api/v1/tang/gao/list?tid=7383&limit=10&page=3"
+  params:
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课堂--课堂互动获取点名列表"
+  id: "18"
+  method: "get"
+  path: "/api/v1/tang/gao/list?tid=7383&limit=10&page=2"
+  params:
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课堂--获取教学内容"
+  id: "19"
+  method: "get"
+  path: "/api/v1/report/contentList?tid=7383"
+  params:
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课堂--获取课堂视频"
+  id: "20"
+  method: "get"
+  path: "/api/v1/tang/video/list?tid=7383&limit=10&page=1"
+  params:
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课件--查看课件详情"
+  id: "21"
+  method: "get"
+  path: "/api/v1/courseware/info?courseware_id=3743"
+  params:
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "课件详情--习题分析--答题统计"
+  id: "22"
+  method: "get"
+  path: "/api/v1/courseware/answerStatics?id=4816"
+  params:
+  status: 0
+  expectd_body: { "code": 0 }
+
+- dec: "学习日志--获取试卷详情"
+  id: "23"
+  method: "get"
+  path: "/api/v1/report/paper/detail?paper_id=673"
+  params:
+  status: 0
+  expectd_body: { "code": 0 }

@@ -10,7 +10,7 @@ class DataTest:
     def test_read(self):
 
         #当前文件路径
-        file_path = '/Users/vita/Desktop/Api_Svstrong_Lzq/Params/Param'
+        file_path = '/Users/vita/Desktop/svs/Api_Svstrong_Lzq/Params/Param'
         #拼接yaml文件路径
         yaml_path = file_path+self.yaml_name
 
@@ -21,11 +21,11 @@ class DataTest:
         #加载文件 FullLoader 加载yaml所有文件
         test_data = yaml.load(read_yaml,Loader = yaml.FullLoader)
 
-
+        print(test_data)
         return test_data
 
 
 
 
 if __name__ == '__main__':
-    test = DataTest('/TestData.yaml').test_read()
+    ll = DataTest('/svs_get.yaml').test_read()

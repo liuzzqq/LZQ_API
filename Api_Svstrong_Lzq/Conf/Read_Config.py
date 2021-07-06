@@ -15,14 +15,15 @@ class Read_Config:
 
     def readconfig(self):
         #文件路径
-        config_path = '/Users/vita/Desktop/Api_Svstrong_Lzq/Conf/config.ini'
+        config_path = '/Users/vita/Desktop/svs/Api_Svstrong_Lzq/Conf/config.ini'
 
         config = configparser.ConfigParser()
         config.read(config_path,encoding="utf-8-sig")
 
         cookie_data=config.get(self.section,self.options)
-
+        print(cookie_data)
         return cookie_data
+
 
 if __name__ == '__main__':
     test = Read_Config('Svs','host').readconfig()
